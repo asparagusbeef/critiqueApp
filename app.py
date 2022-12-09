@@ -7,16 +7,16 @@ from datetime import datetime as dt
 
 def create_keyfile_dict():
     variables_keys = {
-        "type": environ.get('SHEET_TYPE'),
-        "project_id": environ.get('SHEET_PROJECT_ID'),
-        "private_key_id": environ.get('SHEET_PRIVATE_KEY_ID'),
-        "private_key": environ.get('SHEET_PRIVATE_KEY').replace('\\n', '\n'),
-        "client_email": environ.get('SHEET_CLIENT_EMAIL'),
-        "client_id": environ.get('SHEET_CLIENT_ID'),
-        "auth_uri": environ.get('SHEET_AUTH_URL'),
-        "token_uri": environ.get('SHEET_TOKEN_URL'),
-        "auth_provider_x509_cert_url": environ.get('SHEET_AUTH_PROVIDER_X509_CERT_URL'),
-        "client_x509_cert_url": environ.get('SHEET_CLIENT_X509_CERT_URL')
+        "type": environ['SHEET_TYPE'],
+        "project_id": environ['SHEET_PROJECT_ID'],
+        "private_key_id": environ['SHEET_PRIVATE_KEY_ID'],
+        "private_key": environ['SHEET_PRIVATE_KEY'].replace['\\n', '\n'],
+        "client_email": environ['SHEET_CLIENT_EMAIL'],
+        "client_id": environ['SHEET_CLIENT_ID'],
+        "auth_uri": environ['SHEET_AUTH_URL'],
+        "token_uri": environ['SHEET_TOKEN_URL'],
+        "auth_provider_x509_cert_url": environ['SHEET_AUTH_PROVIDER_X509_CERT_URL'],
+        "client_x509_cert_url": environ['SHEET_CLIENT_X509_CERT_URL']
     }
     return variables_keys
 print(create_keyfile_dict())
