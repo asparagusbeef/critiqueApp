@@ -1,7 +1,8 @@
+from os import environ
 from flask import Flask, render_template, request, flash
 import openai
-import os
-openai.api_key = os.environ['OPENAI_API_KEY']
+
+openai.api_key = environ['OPENAI_API_KEY']
 
 app = Flask(__name__)
 app.secret_key = "***REMOVED***"
