@@ -10,7 +10,7 @@ def create_keyfile_dict():
         "type": environ.get('SHEET_TYPE'),
         "project_id": environ.get('SHEET_PROJECT_ID'),
         "private_key_id": environ.get('SHEET_PRIVATE_KEY_ID'),
-        "private_key": environ.get('SHEET_PRIVATE_KEY'),
+        "private_key": environ.get('SHEET_PRIVATE_KEY').replace('\\n', '\n'),
         "client_email": environ.get('SHEET_CLIENT_EMAIL'),
         "client_id": environ.get('SHEET_CLIENT_ID'),
         "auth_uri": environ.get('SHEET_AUTH_URL'),
