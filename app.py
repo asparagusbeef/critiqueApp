@@ -5,7 +5,7 @@ import openai
 openai.api_key = environ['OPENAI_API_KEY']
 
 app = Flask(__name__)
-app.secret_key = "***REMOVED***"
+app.secret_key = environ['APP_SECRET_KEY']
 
 @app.route("/critiqueBeta")
 def index():
