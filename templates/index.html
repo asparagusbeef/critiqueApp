@@ -3,6 +3,22 @@
 	<head>
 	<meta charset="UT8-8">
 	<title>AI Critique Beta</title>
+	<script type = "text/javascript">  
+	$('.like, .dislike').on('click', function() {
+		event.preventDefault();
+		$('.active').removeClass('active');
+		$(this).addClass('active');
+	});
+
+	function onsubmit() {
+		var x = document.getElementById("rating");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+  }
+}
+	</script>  
 	</head>
 	<body>
 		<link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
@@ -165,7 +181,6 @@ Overall, the colonization of North America by Europeans had both positive and ne
 			</div>
 		<!-- partial -->
 		<script src='https://use.fontawesome.com/7ad89d9866.js'></script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script><script  src="./script.js"></script>
 		<br><br><br><br><br><br><br><br><br>
 		</div>
 		</body>
