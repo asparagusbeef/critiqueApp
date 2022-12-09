@@ -5,11 +5,3 @@ $('.like, .dislike').on('click', function() {
 });
 
 
-function onsubmit() {
-  var x = document.getElementById("rating");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
