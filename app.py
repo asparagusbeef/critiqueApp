@@ -4,6 +4,7 @@ import openai
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from datetime import datetime as dt
+import json
 
 def create_keyfile_dict():
     variables_keys = {
@@ -24,7 +25,7 @@ scopes = [
 'https://www.googleapis.com/auth/spreadsheets',
 'https://www.googleapis.com/auth/drive'
 ]
-credentials = ServiceAccountCredentials.from_json_keyfile_name(create_keyfile_dict(), scopes) #access the json key you downloaded earlier 
+credentials = ServiceAccountCredentials.from_json_keyfile_name(json.dumps(create_keyfile_dict()), scopes) #access the json key you downloaded earlier 
 file = gspread.authorize(credentials) # authenticate the JSON key with gspread
 sheet = file.open("critiqueData") #open sheet
 sheet = sheet.sheet1 #replace sheet_name with the name that corresponds to yours, e.g, it can be sheet1
