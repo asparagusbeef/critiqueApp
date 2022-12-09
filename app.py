@@ -8,7 +8,7 @@ import json
 
 def create_keyfile_dict():
     variables_keys = {
-        "type": environ.get('SHEET_TYPE')
+        "type": environ.get('SHEET_TYPE'),
         "project_id": environ.get('SHEET_PROJECT_ID'),
         "private_key_id": environ.get('SHEET_PRIVATE_KEY_ID'),
         "private_key": environ.get('SHEET_PRIVATE_KEY'),
