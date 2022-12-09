@@ -45,6 +45,8 @@ def appendInputToSheets(sheet,assignment_type,prompt,text,ai_prompt,ai_response,
         elif col_index == 6:
             sheet.update_cell(nrows+1, col_index, ai_prompt)
         elif col_index == 7:
+            if ai_response[0:2] == "\n":
+                ai_response = ai_response[2:]
             sheet.update_cell(nrows+1, col_index, ai_response)
         elif col_index == 8:
             sheet.update_cell(nrows+1, col_index, user_rating)
