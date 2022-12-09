@@ -19,7 +19,7 @@ def create_keyfile_dict():
         "client_x509_cert_url": environ.get('SHEET_CLIENT_X509_CERT_URL')
     }
     return variables_keys
-print(create_keyfile_dict)
+print(create_keyfile_dict())
 scopes = [
 'https://www.googleapis.com/auth/spreadsheets',
 'https://www.googleapis.com/auth/drive'
