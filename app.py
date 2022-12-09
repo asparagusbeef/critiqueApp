@@ -33,7 +33,7 @@ def appendInputToSheets(sheet,assignment_type,prompt,text,ai_prompt,ai_response,
     for col_index in range(ncols):
         col_index += 1
         if col_index == 1:
-            sheet.update_cell(nrows, col_index, nrows+1)
+            sheet.update_cell(nrows+1, col_index, nrows)
         elif col_index == 2:
             sheet.update_cell(nrows+1, col_index, str(dt.now()))
         elif col_index == 3:
