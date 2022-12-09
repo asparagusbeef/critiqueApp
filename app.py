@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, flash
-from boto.s3.connection import S3Connection
 import openai
-openai.api_key = S3Connection(os.environ['OPENAI_API_KEY'])
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 app = Flask(__name__)
 app.secret_key = "***REMOVED***"
