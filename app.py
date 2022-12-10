@@ -27,7 +27,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(create_keyfile_di
 file = gspread.authorize(credentials) # authenticate the JSON key with gspread
 sheet = file.open("critiqueData") #open sheet
 sheet = sheet.sheet1 #replace sheet_name with the name that corresponds to yours, e.g, it can be sheet1
-def appendInputToSheets(sheet,assignment_type,prompt,text,ai_prompt,ai_response,user_rating="NA"):
+def appendInputToSheets(sheet,prompt,text,ai_prompt,ai_response,user_rating="NA"):
     nrows = len(sheet.col_values(1))
     ncols = len(sheet.row_values(1))
     for col_index in range(ncols):
@@ -37,18 +37,16 @@ def appendInputToSheets(sheet,assignment_type,prompt,text,ai_prompt,ai_response,
         elif col_index == 2:
             sheet.update_cell(nrows+1, col_index, str(dt.now()))
         elif col_index == 3:
-            sheet.update_cell(nrows+1, col_index, assignment_type)
-        elif col_index == 4:
             sheet.update_cell(nrows+1, col_index, prompt)
-        elif col_index == 5:
+        elif col_index == 4:
             sheet.update_cell(nrows+1, col_index, text)
-        elif col_index == 6:
+        elif col_index == 5:
             sheet.update_cell(nrows+1, col_index, ai_prompt)
-        elif col_index == 7:
+        elif col_index == 6:
             if ai_response[0:2] == "\n":
                 ai_response = ai_response[2:]
             sheet.update_cell(nrows+1, col_index, ai_response)
-        elif col_index == 8:
+        elif col_index == 7:
             sheet.update_cell(nrows+1, col_index, user_rating)
         else:
             print("out of bounds!")
@@ -68,20 +66,15 @@ def index():
 
 @app.route("/userInput", methods=["POST","GET"])
 def submit():
-    if str(request.form['radio-group-1670480900795'])=="option-1":
-        assignment_type = "Essay"
-    else:
-        assignment_type = "Paragraph"
     prompt = str(request.form['textarea-1670481047558'])
     text = str(request.form['textarea-1670481047559'])
-    flash(assignment_type)
     flash(prompt)
     flash(text)
-    davinci_prompt = f"The following {assignment_type.lower()} was written according to a prompt.\n"+\
+    davinci_prompt = f"The following text was written according to an instruction.\n"+\
         "Please grade it on a scale of 1-100, and give a constructive critique on it\n\n"+\
-            f"Prompt: {prompt}\n\n{assignment_type}:\n{text}\n\n ------------------------\n\n"
+            f"Instruction: {prompt}\n\nText:\n{text}\n\n ------------------------\n\n"
     output = openai.Completion.create(engine = "text-davinci-002", prompt = davinci_prompt)
     output_text = output.choices[0].text
     flash(output_text)
-    appendInputToSheets(sheet,assignment_type,prompt,text,davinci_prompt,output_text)
+    appendInputToSheets(sheet,prompt,text,davinci_prompt,output_text)
     return render_template("index.html")
