@@ -23,10 +23,11 @@ scopes = [
 'https://www.googleapis.com/auth/spreadsheets',
 'https://www.googleapis.com/auth/drive'
 ]
-credentials = ServiceAccountCredentials.from_json_keyfile_dict(create_keyfile_dict(), scopes) #access the json key you downloaded earlier 
-file = gspread.authorize(credentials) # authenticate the JSON key with gspread
-sheet = file.open("critiqueData") #open sheet
-sheet = sheet.sheet1 #replace sheet_name with the name that corresponds to yours, e.g, it can be sheet1
+credentials = ServiceAccountCredentials.from_json_keyfile_dict(create_keyfile_dict(), scopes) # access the json google api key
+file = gspread.authorize(credentials) # authentication
+sheet = file.open("critiqueData") # open sheet
+sheet = sheet.sheet1
+
 def appendInputToSheets(sheet,prompt,text,ai_prompt,ai_response,user_rating="NA"):
     nrows = len(sheet.col_values(1))
     ncols = len(sheet.row_values(1))
